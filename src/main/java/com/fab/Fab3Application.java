@@ -1,4 +1,4 @@
-package com.fab.fab3;
+package com.fab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

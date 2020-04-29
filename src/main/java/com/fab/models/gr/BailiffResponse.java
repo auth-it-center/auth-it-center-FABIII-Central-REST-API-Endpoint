@@ -1,28 +1,30 @@
 package com.fab.models.gr;
 
+import com.fab.utils.Utilities;
+
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.persistence.Embeddable;
-
 import lombok.Data;
 
 @Data
 @Embeddable
 public class BailiffResponse {
 
-    public BailiffResponse () {}
+    public BailiffResponse() {
+    }
 
-    public BailiffResponse (List<BailiffEntity> listOfBailiffs, String country, String lang) {
+    public BailiffResponse(List<BailiffEntity> listOfBailiffs, String country, String lang) {
         state = "answered";
+
         competenceBodies = listOfBailiffs.stream().map(b -> {
 
            BailiffDetails bd = new BailiffDetails();
            bd.setName(b.getName());
            bd.setLang(lang);
-           bd.setAddress(b.getAddress());
+           bd.setAddress(Utilities.transliterate(b.getAddress()));
            bd.setPostalCode(b.getPostalCode());
-           bd.setMunicipality(b.getMunicipality());
+           bd.setMunicipality(Utilities.transliterate(b.getMunicipality()));
            bd.setTel(b.getTel());
 
            BailiffObject bo = new BailiffObject();

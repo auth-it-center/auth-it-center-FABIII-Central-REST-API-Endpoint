@@ -1,17 +1,63 @@
-package com.fab.bailiff.lv;
+package com.fab.bailiff.lv.entity;
+
+import com.fab.bailiff.lv.entity.BailiffLV;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
 public class BailiffLVResponse {
 
-    private String Id;
+    @JsonProperty("Id")
+    private String id;
 
-    private String Actualized;
+    @JsonProperty("Actualized")
+    private String actualized;
 
+    @JsonProperty("Count")
     private int count;
 
-    private List<BailiffLV> Data;
+    @JsonProperty("Data")
+    private List<BailiffLV> bailiffLVs;
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public String getActualized() {
+        return actualized;
+    }
+
+    public void setActualized(String actualized) {
+        this.actualized = actualized;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public List<BailiffLV> getBailiffLVs() {
+        return bailiffLVs;
+    }
+
+    public void setBailiffLVs(List<BailiffLV> bailiffLVs) {
+        this.bailiffLVs = bailiffLVs;
+    }
+
+    @Override
+    public String toString() {
+        return "BailiffLVResponse{" +
+                "id='" + id + '\'' +
+                ", actualized='" + actualized + '\'' +
+                ", count=" + count +
+                ", bailiffLVs=" + bailiffLVs +
+                '}';
+    }
 }

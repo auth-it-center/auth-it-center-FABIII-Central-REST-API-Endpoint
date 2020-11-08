@@ -12,9 +12,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class ExecuteGetUtil {
+public class HttpsURLConnectionUtil {
 
-    private String executeGet2(String url) {
+    public static String executeGetRequest(String url) {
 
         try {
             //
@@ -40,27 +40,19 @@ public class ExecuteGetUtil {
                 return response.toString();
             }
 
-
         } catch (MalformedURLException e) {
-
+            // TODO do something
             e.printStackTrace();
         } catch (ProtocolException e) {
-
+            // TODO do something
             e.printStackTrace();
         } catch (IOException e) {
-
+            // TODO do something
             e.printStackTrace();
         }
+
 
         return null;
     }
 
-//
-//    public static void main(String[] args) {
-//        ExecuteGetUtil e = new ExecuteGetUtil();
-//
-//
-//        e.executeGet2("https://testbailiff.ta.gov.lv/api/bailiff/getall");
-//
-//    }
 }

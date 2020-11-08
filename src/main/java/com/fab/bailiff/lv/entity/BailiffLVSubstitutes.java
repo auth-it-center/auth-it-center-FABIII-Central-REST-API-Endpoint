@@ -1,8 +1,24 @@
-package com.fab.bailiff.lv;
+package com.fab.bailiff.lv.entity;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BailiffLVSubstitutes {
 
-    private String FullName;
+    @JsonProperty("FullName")
+    private String fullName;
 
+    public String getFullName() {
+        return fullName;
+    }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    @Override
+    public String toString() {
+        return "BailiffLVSubstitutes{" +
+                "fullName='" + fullName + '\'' +
+                '}';
+    }
 }

@@ -4,6 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import lombok.Data;
 
+/**
+ * Bailiff object stored at the db
+ * and access them via JPA
+ */
 @Data
 @Entity
 @Table(name="bailiffs")

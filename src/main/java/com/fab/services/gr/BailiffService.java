@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 @Service("bailiffService")
 public class BailiffService {
 
+    public static final String GRCountry = "GR";
+
     @Autowired
     private BailiffRepository bailiffRepository;
     

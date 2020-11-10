@@ -1,22 +1,27 @@
-package com.fab.models.gr;
+package com.fab.models;
+
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import lombok.Data;
 
-/**
- * Bailiff object stored at the db
- * and access them via JPA
- */
 @Data
 @Entity
-@Table(name="bailiffs")
-public class BailiffEntity {
+@Table(name="bailiffs2")
+public class BailiffEntity2 {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id")
     private Long id;
+
+    @Column(name="country")
+    @NotEmpty(message="* Please Enter country")
+    private String country;
+
+    @Column(name="lang")
+    @NotEmpty(message="* Please Enter lang")
+    private String lang;
 
     @Column(name="name")
     @NotEmpty(message="* Please Enter Full Name")
@@ -45,6 +50,22 @@ public class BailiffEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
     }
 
     public String getName() {
@@ -85,5 +106,22 @@ public class BailiffEntity {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public BailiffEntity2() {
+    }
+
+    @Override
+    public String toString() {
+        return "BailiffEntity2{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                ", lang='" + lang + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", municipality='" + municipality + '\'' +
+                ", tel='" + tel + '\'' +
+                '}';
     }
 }

@@ -14,6 +14,7 @@ public class BailiffLVController {
     @Autowired
     private BailiffLVService bailiffLVService;
 
+    // http:localhost:4000/api/v1/bailiffs/lv/en/update
     //@RequestMapping("/bailiffs/{country}/{lang}/update")
     @RequestMapping(value="/bailiffs/lv/en/update", method=RequestMethod.GET)
     public void updateBailiffs() {

@@ -17,9 +17,9 @@ public class BailiffLVController {
     // http:localhost:4000/api/v1/bailiffs/lv/en/update
     //@RequestMapping("/bailiffs/{country}/{lang}/update")
     @RequestMapping(value="/bailiffs/lv/en/update", method=RequestMethod.GET)
-    public void updateBailiffs() {
+    public BailiffResponse  updateBailiffs() {
         // update lv bailifs
-        bailiffLVService.updateBailiffs();
+        return bailiffLVService.updateBailiffs();
     }
 
 

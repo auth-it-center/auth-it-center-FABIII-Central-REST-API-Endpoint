@@ -1,10 +1,9 @@
 package com.fab.utils;
 
-import com.fab.bailiff.lv.entity.BailiffLVResponse;
+import com.fab.entities.lv.BailiffLVResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Assert;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 

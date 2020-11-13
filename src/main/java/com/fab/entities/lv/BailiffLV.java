@@ -1,4 +1,4 @@
-package com.fab.bailiff.lv.entity;
+package com.fab.entities.lv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

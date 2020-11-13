@@ -2,8 +2,8 @@ package com.fab.controllers.gr;
 
 import java.util.Optional;
 
-import com.fab.models.gr.BailiffResponse;
-import com.fab.services.gr.BailiffService;
+import com.fab.models.BailiffResponse;
+import com.fab.services.gr.BailiffGRService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-public class BailiffController {
+public class BailiffGRController {
     
     @Autowired
-    private BailiffService bailiffService;
+    private BailiffGRService bailiffGRService;
 
-    @GetMapping("/bailiffs")
+    @GetMapping("/bailiffs/gr")
     public BailiffResponse getBailiffs(@RequestParam Optional<String> postalCode) {
         return postalCode
-            .map(pc -> bailiffService.findBailiffByPostalCode("GR","el", pc))
-            .orElse(bailiffService.getAllBailiffs("GR","el"));  
+            .map(pc -> bailiffGRService.findBailiffByPostalCode("GR","el", pc))
+            .orElse(bailiffGRService.getAllBailiffs("GR","el"));
     }
     
 }

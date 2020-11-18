@@ -1,9 +1,6 @@
-package com.fab.bailiff.lv.entity;
+package com.fab.entities.lv;
 
-import com.fab.bailiff.lv.entity.BailiffLV;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.util.List;
 

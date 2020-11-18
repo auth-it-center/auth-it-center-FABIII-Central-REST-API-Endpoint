@@ -1,9 +1,6 @@
 package com.fab.utils;
 
 
-import com.fab.bailiff.lv.entity.BailiffLVResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;

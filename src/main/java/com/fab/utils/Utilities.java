@@ -9,6 +9,8 @@ public class Utilities {
 
     public static Map<Character, String> LATVIAN_TO_ENGLISH = populateLatvianEnglish();
 
+    public static Map<Character, String> PORTUGUESE_TO_ENGLISH = populatePortugueseEnglish();
+
     private static Map<Character, String> populateGreeklish() {
         Map<Character, String> map = new HashMap<>(50);
 
@@ -167,6 +169,91 @@ public class Utilities {
         return map;
     }
 
+    private static Map<Character, String> populatePortugueseEnglish() {
+        Map<Character, String> map = new HashMap<>(50);
+
+        //Special Characters
+        map.put('À', "A");
+        map.put('Á', "A");
+        map.put('Â', "A");
+        map.put('Ã', "A");
+        map.put('Ç', "C");
+        map.put('É', "E");
+        map.put('Ê', "E");
+        map.put('Í', "I");
+        map.put('Ó', "O");
+        map.put('Ô', "O");
+        map.put('Õ', "O");
+        map.put('Ú', "U");
+        map.put('Ü', "U");
+        map.put('à', "a");
+        map.put('á', "a");
+        map.put('â', "a");
+        map.put('ã', "a");
+        map.put('ç', "c");
+        map.put('é', "e");
+        map.put('ê', "e");
+        map.put('í', "i");
+        map.put('ó', "o");
+        map.put('ô', "o");
+        map.put('õ', "o");
+        map.put('ú', "u");
+        map.put('ü', "u");
+
+        //Capital
+        map.put('A', "A");
+        map.put('B', "B");
+        map.put('C', "C");
+        map.put('D', "D");
+        map.put('E', "E");
+        map.put('F', "F");
+        map.put('G', "G");
+        map.put('H', "H");
+        map.put('I', "I");
+        map.put('J', "J");
+        map.put('K', "K");
+        map.put('L', "L");
+        map.put('M', "M");
+        map.put('N', "N");
+        map.put('O', "O");
+        map.put('P', "P");
+        map.put('R', "R");
+        map.put('S', "S");
+        map.put('T', "T");
+        map.put('U', "U");
+        map.put('V', "V");
+        map.put('Z', "Z");
+
+        //Lower case
+        map.put('a', "a");
+        map.put('ā', "a");
+        map.put('b', "b");
+        map.put('c', "c");
+        map.put('d', "d");
+        map.put('e', "e");
+        map.put('f', "f");
+        map.put('g', "g");
+        map.put('ģ', "g");
+        map.put('h', "h");
+        map.put('i', "i");
+        map.put('j', "j");
+        map.put('k', "k");
+        map.put('l', "l");
+        map.put('m', "m");
+        map.put('n', "n");
+        map.put('o', "o");
+        map.put('p', "p");
+        map.put('r', "r");
+        map.put('s', "s");
+        map.put('t', "t");
+        map.put('u', "u");
+        map.put('v', "v");
+        map.put('z', "z");
+
+
+        return map;
+    }
+
     public static String transliterate(String input, String lang){
 
         StringBuilder sb = new StringBuilder();
@@ -178,6 +265,10 @@ public class Utilities {
         } else if (lang.equals("lv")) { // TODO use static variables
             for (char c : input.toCharArray()) {
                 sb.append(LATVIAN_TO_ENGLISH.getOrDefault(c, c + ""));
+            }
+        }  else if (lang.equals("pt")) {
+            for (char c : input.toCharArray()) {
+                sb.append(PORTUGUESE_TO_ENGLISH.getOrDefault(c, c + ""));
             }
         }
 

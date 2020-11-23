@@ -8,10 +8,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.HashMap;
 
 public class HttpsURLConnectionUtil {
 
-    public static String executeGetRequest(String url) {
+    public static String executeGetRequest(String url, HashMap<String, String> headers) {
 
         try {
             //
@@ -20,6 +21,10 @@ public class HttpsURLConnectionUtil {
             HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json; utf-8");
+
+            for (HashMap.Entry<String, String> entry : headers.entrySet()) {
+                con.setRequestProperty(entry.getKey(), entry.getValue());
+            }
 
             //
             int responseCode = con.getResponseCode();

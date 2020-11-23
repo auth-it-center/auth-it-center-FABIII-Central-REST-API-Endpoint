@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
 
 /**
@@ -23,7 +24,7 @@ public class BailiffLVService {
 
     private ArrayList<Bailiff> reformatJSON() throws JsonProcessingException {
         // get lv bailiffs
-        String responseJSONString = HttpsURLConnectionUtil.executeGetRequest(LVBailiffsUrl);
+        String responseJSONString = HttpsURLConnectionUtil.executeGetRequest(LVBailiffsUrl, new HashMap<String, String>());
 
         // convert string response to BailiffLVResponse
         ObjectMapper mapper = new ObjectMapper();

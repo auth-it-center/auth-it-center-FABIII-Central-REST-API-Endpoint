@@ -3,6 +3,7 @@ package com.fab.models;
 import com.fab.models.Bailiff;
 import com.fab.utils.Utilities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.persistence.Embeddable;
@@ -30,9 +31,13 @@ public class BailiffResponse {
            bd.setTel(b.getTel());
 
            BailiffObject bo = new BailiffObject();
+
+           ArrayList<BailiffDetails> bailiffDetailsList = new ArrayList<>();
+           bailiffDetailsList.add(bd);
+
            bo.setId(b.getId());
            bo.setCountry(country);
-           bo.setDetails(bd);
+           bo.setDetails(bailiffDetailsList);
         
            return bo;
         }).collect(Collectors.toList());
@@ -46,7 +51,7 @@ public class BailiffResponse {
     private class BailiffObject {
         private long id;
         private String country;
-        private BailiffDetails details;
+        private List<BailiffDetails> details;
 
         public long getId() {
             return id;
@@ -64,11 +69,9 @@ public class BailiffResponse {
             this.country = country;
         }
 
-        public BailiffDetails getDetails() {
-            return details;
-        }
+        public List<BailiffDetails> getDetails() { return details; }
 
-        public void setDetails(BailiffDetails details) {
+        public void setDetails(List<BailiffDetails> details) {
             this.details = details;
         }
     }

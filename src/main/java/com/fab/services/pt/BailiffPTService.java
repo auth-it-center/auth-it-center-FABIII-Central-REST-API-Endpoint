@@ -1,6 +1,5 @@
 package com.fab.services.pt;
 
-import com.fab.entities.lv.BailiffLVResponse;
 import com.fab.entities.pt.BailiffPT;
 import com.fab.models.Bailiff;
 import com.fab.models.BailiffImpl;
@@ -49,6 +48,10 @@ public class BailiffPTService {
             String idStr = bailiffPT.getNumcedula();
             long id = Long.parseLong(idStr);
             bailiff.setId(id);
+
+            bailiff.setIsSetLang(false);
+
+            bailiff.setIsSetCountry(false);
 
             bailiff.setName(bailiffPT.getNome());
 

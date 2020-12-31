@@ -1,6 +1,6 @@
 package com.fab.services.lv;
 
-import com.fab.entities.lv.BailiffLVResponse;
+import com.fab.entities.lv.BailiffLV;
 import com.fab.models.Bailiff;
 import com.fab.models.BailiffImpl;
 import com.fab.utils.HttpsURLConnectionUtil;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Optional;
 
 /**
  *
@@ -29,41 +28,41 @@ public class BailiffLVService {
         // convert string response to BailiffLVResponse
         ObjectMapper mapper = new ObjectMapper();
 
-        BailiffLVResponse bailiffLVResponse = mapper.readValue(responseJSONString, BailiffLVResponse.class);
+        BailiffLV bailiffLVResponse = mapper.readValue(responseJSONString, BailiffLV.class);
         //TODO add Mapper setting
 
         ArrayList<Bailiff> bailiffEntities = new ArrayList<>();
 
-        bailiffLVResponse.getBailiffLVs().forEach(b -> {
+        bailiffLVResponse.getCompetentBodies().forEach(b -> {
 
-            // convert from BailiffLVs to BailiffGREntity
             Bailiff bailiff = new BailiffImpl();
 
+            //setup country
+            bailiff.setIsSetCountry(true);
+            bailiff.setCountry(b.getCountry());
+
+            // setup lang
+            bailiff.setIsSetLang(true);
+            bailiff.setLang(b.getDetails().getLang());
+
             // setup id
-            String idStr = b.getDistrict();
-            long id = Long.parseLong(idStr);
+            long id = b.getId();
             bailiff.setId(id);
 
-//            //setup country
-//            entity.setCountry(BailiffLVService.LVCountry);
-//
-//            //setup lang
-//            entity.setLang(BailiffLVService.LVLang);
-
             //setup name
-            bailiff.setName(b.getFullName());
+            bailiff.setName(b.getDetails().getName());
 
             // setup address
-            bailiff.setAddress(b.getAddress().getFullAddress());
+            bailiff.setAddress(b.getDetails().getAdress());
 
             //setup postal code
-            bailiff.setPostalCode(b.getAddress().getPostCode());
+            bailiff.setPostalCode(b.getDetails().getPostalCode());
 
             //setup municipality
-            bailiff.setMunicipality(b.getAddress().getCity());
+            bailiff.setMunicipality(b.getDetails().getMunicipality());
 
             //setup tel
-            bailiff.setTel(b.getContacts().getPhone());
+            bailiff.setTel(b.getDetails().getTel());
 
             // add the entity to an array
             bailiffEntities.add(bailiff);

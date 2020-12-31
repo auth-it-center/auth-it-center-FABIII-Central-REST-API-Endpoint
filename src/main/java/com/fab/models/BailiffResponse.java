@@ -24,7 +24,13 @@ public class BailiffResponse {
 
            BailiffDetails bd = new BailiffDetails();
            bd.setName(Utilities.transliterate(b.getName(), lang));
-           bd.setLang(lang);
+
+           if (b.getIsSetLang()) {
+               bd.setLang(b.getLang());
+           } else {
+               bd.setLang(lang);
+           }
+
            bd.setAddress(Utilities.transliterate(b.getAddress(), lang));
            bd.setPostalCode(b.getPostalCode());
            bd.setMunicipality(Utilities.transliterate(b.getMunicipality(), lang));
@@ -36,7 +42,13 @@ public class BailiffResponse {
            bailiffDetailsList.add(bd);
 
            bo.setId(b.getId());
-           bo.setCountry(country);
+
+           if (b.getIsSetCountry()) {
+               bo.setCountry(b.getCountry());
+           } else {
+               bo.setCountry(country);
+           }
+
            bo.setDetails(bailiffDetailsList);
         
            return bo;

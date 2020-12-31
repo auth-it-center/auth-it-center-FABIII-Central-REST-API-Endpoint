@@ -1,22 +1,20 @@
 package com.fab.utils;
 
-import com.fab.entities.lv.BailiffLVResponse;
+import com.fab.entities.lv.BailiffLV;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Test;
+import junit.framework.*;
 
 import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class HttpsURLConnectionUtilTest {
+public class HttpsURLConnectionUtilTest extends TestCase {
 
     private static String LVBailiffsUrl = "https://testbailiff.ta.gov.lv/api/bailiff/getall";
 
-
-    @Test
     public void testExecuteGetRequest() {
 
         String str = HttpsURLConnectionUtil.executeGetRequest(LVBailiffsUrl, new HashMap<String, String>());
@@ -24,17 +22,12 @@ public class HttpsURLConnectionUtilTest {
         mapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true);
         mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
         try {
-            BailiffLVResponse bailiffLVResponse = mapper.readValue(str, BailiffLVResponse.class);
+            BailiffLV bailiffLVResponse = mapper.readValue(str, BailiffLV.class);
 
-            assertThat(bailiffLVResponse.getCount()).isEqualTo(100);
-
-            assertThat(bailiffLVResponse.getBailiffLVs().get(0).getFullName()).isEqualTo("Inese Bože");
+        assertEquals(bailiffLVResponse.getState(), "ANSWERED");
 
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
-
     }
-
 }

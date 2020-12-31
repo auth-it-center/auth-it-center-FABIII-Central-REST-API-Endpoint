@@ -18,6 +18,14 @@ public class BailiffImpl implements Bailiff {
 
     private String tel;
 
+    private String lang;
+
+    private boolean isSetLang;
+
+    private String country;
+
+    private boolean isSetCountry;
+
 
     public Long getId() {
         return id;
@@ -65,5 +73,37 @@ public class BailiffImpl implements Bailiff {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+
+    public boolean getIsSetLang() {
+        return isSetLang;
+    }
+
+    public void setIsSetLang(boolean setLang) {
+        isSetLang = setLang;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public boolean getIsSetCountry() {
+        return isSetCountry;
+    }
+
+    public void setIsSetCountry(boolean setCountry) {
+        isSetCountry = setCountry;
     }
 }

@@ -89,4 +89,44 @@ public class BailiffGREntity implements Bailiff {
     public void setTel(String tel) {
         this.tel = tel;
     }
+
+    @Override
+    public String getLang() {
+        return null;
+    }
+
+    @Override
+    public void setLang(String lang) {
+
+    }
+
+    @Override
+    public boolean getIsSetLang() {
+        return false;
+    }
+
+    @Override
+    public void setIsSetLang(boolean setLang) {
+
+    }
+
+    @Override
+    public String getCountry() {
+        return null;
+    }
+
+    @Override
+    public void setCountry(String country) {
+
+    }
+
+    @Override
+    public boolean getIsSetCountry() {
+        return false;
+    }
+
+    @Override
+    public void setIsSetCountry(boolean setCountry) {
+
+    }
 }

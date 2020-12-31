@@ -13,7 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>fab3</name>
 	<description>Demo project for Fab3 Api</description>
-        <packaging>war</packaging>
 
 	<properties>
 		<!--<java.version>14</java.version>-->
@@ -21,6 +20,35 @@
 	</properties>
 
 	<dependencies>
+		<!-- CUSTOM DEPENDENCIES -->
+		<!--
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.3.6.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>auth0</artifactId>
+			<version>1.25.0</version>
+		</dependency>
+		-->
+		<!-- CUSTOM DEPENDENCIES -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -84,11 +112,6 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
-    		<dependency>
-        		<groupId>org.springframework.boot</groupId>
-        		<artifactId>spring-boot-starter-tomcat</artifactId>
-        		<scope>provided</scope>
-    		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -115,14 +138,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-                        <plugin>
-                                <groupId>org.apache.maven.plugins</groupId>
-                    	        <artifactId>maven-compiler-plugin</artifactId>
-              		        <configuration>
-                 		   <source>1.8</source>
-                   		   <target>1.8</target>
-               		        </configuration>
-         	   	</plugin>
 		</plugins>
 	</build>
 

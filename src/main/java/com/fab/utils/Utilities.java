@@ -258,6 +258,10 @@ public class Utilities {
 
         StringBuilder sb = new StringBuilder();
 
+        if (input == null) {
+            return null;
+        }
+
         if (lang.equals("el")) { // TODO use static variables
             for (char c : input.toCharArray()) {
                 sb.append(GREEK_TO_GREEKLISH.getOrDefault(c, c + ""));

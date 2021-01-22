@@ -113,7 +113,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
 
     private void sendEmail() {
         // Recipient's email ID needs to be mentioned.
-        String to = "vasilisandritsouds@gmail.com";
+        String to = "fab3@it.auth.gr";
 
         // Sender's email ID needs to be mentioned
         String from = "vasandven@gapps.auth.gr";

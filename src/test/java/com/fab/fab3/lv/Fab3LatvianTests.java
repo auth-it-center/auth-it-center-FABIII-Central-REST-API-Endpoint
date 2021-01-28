@@ -51,10 +51,10 @@ class Fab3LatvianTests {
 		Assertions.assertEquals("answered", response.getState());
 
 		// Check that the competence bodies are not empty
-		Assertions.assertFalse(response.getCompetenceBodies().isEmpty());
+		Assertions.assertFalse(response.getCompetentBodies().isEmpty());
 
 		// For every item returned in competence bodies
-		for (BailiffObject item : response.getCompetenceBodies()) {
+		for (BailiffObject item : response.getCompetentBodies()) {
 			// Assert that its class is Bailiff Object
 			Assertions.assertEquals(BailiffObject.class, item.getClass());
 

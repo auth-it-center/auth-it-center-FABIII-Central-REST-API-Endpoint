@@ -1,5 +1,6 @@
-package com.fab.services.pt;
+package com.fab.services.nl;
 
+import com.fab.entities.nl.BailiffNL;
 import com.fab.entities.pt.BailiffPT;
 import com.fab.models.Bailiff;
 import com.fab.models.BailiffImpl;
@@ -7,64 +8,73 @@ import com.fab.utils.HttpsURLConnectionUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@Service("bailiffNLService")
+public class BailiffNLService {
+
 /**
  *
  */
-@Service("bailiffPTService")
-public class BailiffPTService {
 
-    private static final String PTBailiffsUrl = "https://qld.osae.eu/IntegrationServices/rest/REST_AE/GetAllAE?Entidade=Agente%20de%20Execu%C3%A7%C3%A3o";
-    public static final String PTCountry = "PT";
-    private static final String PTLang = "pt";
+    private static final String NLBailiffsUrl = "https://webservices.kbvg.nl/services.php";
+    public static final String NLCountry = "NL";
+    private static final String NLLang = "nl";
 
     private ArrayList<Bailiff> reformatJSON() throws JsonProcessingException {
-        // get pt bailiffs
-        HashMap<String, String> headers = new HashMap<>();
+        // get nl bailiffs
+        String responseJSONString = HttpsURLConnectionUtil.executeGetRequest(NLBailiffsUrl, new HashMap<String, String>());
 
-        headers.put("AppId", "ae");
-        headers.put("Key", "123456");
-
-        String responseJSONString = HttpsURLConnectionUtil.executeGetRequest(PTBailiffsUrl, headers);
-
-        // convert string response to BailiffLVResponse
+        // convert string response to BailiffNLResponse
         ObjectMapper mapper = new ObjectMapper();
 
-        List<BailiffPT> bailiffPTResponse = mapper.readValue(responseJSONString, new TypeReference<List<BailiffPT>>(){});
-        //BailiffPTResponse bailiffPTResponse = mapper.readValue(responseJSONString, BailiffPTResponse.class);
+
         //TODO add Mapper setting
 
         ArrayList<Bailiff> bailiffEntities = new ArrayList<>();
 
-        for (BailiffPT bailiffPT : bailiffPTResponse) {
+
+        BailiffNL bailiffNLResponse = mapper.readValue(responseJSONString, BailiffNL.class);
+        //TODO add Mapper setting
+
+        bailiffNLResponse.getCompetentBodies().forEach(b -> {
+
             Bailiff bailiff = new BailiffImpl();
 
-            String idStr = bailiffPT.getNumcedula();
-            long id = Long.parseLong(idStr);
+            //setup country
+            bailiff.setIsSetCountry(true);
+            bailiff.setCountry(b.getCountry());
+
+            // setup lang
+            bailiff.setIsSetLang(true);
+            bailiff.setLang(b.getDetails().get(0).getLang());
+
+            // setup id
+            long id = Long.parseLong(b.getId().substring(2));
             bailiff.setId(id);
 
-            bailiff.setIsSetLang(false);
+            //setup name
+            bailiff.setName(b.getDetails().get(0).getName());
 
-            bailiff.setIsSetCountry(false);
+            // setup address
+            bailiff.setAddress(b.getDetails().get(0).getAddress());
 
-            bailiff.setName(bailiffPT.getNome());
+            //setup postal code
+            bailiff.setPostalCode(b.getDetails().get(0).getPostalCode());
 
-            bailiff.setAddress(bailiffPT.getMorada().get(0).getAddress());
+            //setup municipality
+            bailiff.setMunicipality(b.getDetails().get(0).getMunicipality());
 
-            bailiff.setPostalCode(bailiffPT.getMorada().get(0).getPostalCode());
+            //setup tel
+            bailiff.setTel(b.getDetails().get(0).getTel());
 
-            bailiff.setMunicipality(bailiffPT.getMorada().get(0).getMunicipality());
-
-            bailiff.setTel(bailiffPT.getMorada().get(0).getContacts().get(0).getTel());
-
+            // add the entity to an array
             bailiffEntities.add(bailiff);
-        }
+        });
 
         return bailiffEntities;
     }

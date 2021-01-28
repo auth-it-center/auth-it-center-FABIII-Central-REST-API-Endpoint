@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-
 public class BailiffPTMorada {
     @JsonProperty("moradaasssoc")
     private String address;

@@ -15,7 +15,7 @@ import lombok.Data;
 public class BailiffResponse {
 
     private String state;
-    private List<BailiffObject> competenceBodies;
+    private List<BailiffObject> competentBodies;
 
     public BailiffResponse() {
     }
@@ -23,7 +23,7 @@ public class BailiffResponse {
     public BailiffResponse(List<Bailiff> listOfBailiffs, String country, String lang) {
         state = "answered";
 
-        competenceBodies = listOfBailiffs.stream().map(b -> {
+        competentBodies = listOfBailiffs.stream().map(b -> {
 
            BailiffDetails bd = new BailiffDetails();
            bd.setName(Utilities.transliterate(b.getName(), lang));

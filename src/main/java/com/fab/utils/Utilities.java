@@ -11,6 +11,8 @@ public class Utilities {
 
     public static Map<Character, String> PORTUGUESE_TO_ENGLISH = populatePortugueseEnglish();
 
+    public static Map<Character, String> DUTCH_TO_ENGLISH = populateDutchEnglish();
+
     private static Map<Character, String> populateGreeklish() {
         Map<Character, String> map = new HashMap<>(50);
 
@@ -169,6 +171,60 @@ public class Utilities {
         return map;
     }
 
+    private static Map<Character, String> populateDutchEnglish() {
+        Map<Character, String> map = new HashMap<>(50);
+
+        // Capital
+        map.put('A', "A");
+        map.put('B', "B");
+        map.put('C', "C");
+        map.put('D', "D");
+        map.put('E', "E");
+        map.put('F', "F");
+        map.put('G', "G");
+        map.put('H', "H");
+        map.put('I', "I");
+        map.put('J', "J");
+        map.put('K', "K");
+        map.put('L', "L");
+        map.put('M', "M");
+        map.put('N', "N");
+        map.put('O', "O");
+        map.put('P', "P");
+        map.put('R', "R");
+        map.put('S', "S");
+        map.put('T', "T");
+        map.put('U', "U");
+        map.put('V', "V");
+        map.put('Z', "Z");
+
+        //Lower case
+        map.put('a', "a");
+        map.put('b', "b");
+        map.put('c', "c");
+        map.put('d', "d");
+        map.put('e', "e");
+        map.put('f', "f");
+        map.put('g', "g");
+        map.put('h', "h");
+        map.put('i', "i");
+        map.put('j', "j");
+        map.put('k', "k");
+        map.put('l', "l");
+        map.put('m', "m");
+        map.put('n', "n");
+        map.put('o', "o");
+        map.put('p', "p");
+        map.put('r', "r");
+        map.put('s', "s");
+        map.put('t', "t");
+        map.put('u', "u");
+        map.put('v', "v");
+        map.put('z', "z");
+
+        return map;
+    }
+
     private static Map<Character, String> populatePortugueseEnglish() {
         Map<Character, String> map = new HashMap<>(50);
 
@@ -273,6 +329,11 @@ public class Utilities {
         }  else if (lang.equals("pt")) {
             for (char c : input.toCharArray()) {
                 sb.append(PORTUGUESE_TO_ENGLISH.getOrDefault(c, c + ""));
+            }
+        }
+           else if (lang.equals("nl")) {
+            for (char c : input.toCharArray()) {
+                sb.append(DUTCH_TO_ENGLISH.getOrDefault(c, c + ""));
             }
         }
 
